@@ -1,0 +1,78 @@
+﻿<Window x:Class="FleetManagement.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Car Park Management" Height="450" Width="800">
+    <TabControl>
+        <TabItem Header="Vehicles">
+            <StackPanel>
+                <!-- элементы фильтрации транспортных средств -->
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <Label Content="Модель:"/>
+                    <TextBox Name="ModelFilterTextBox" Width="150" />
+
+                    <Label Content="Производитель:"/>
+                    <TextBox Name="ManufacturerFilterTextBox" Width="150" />
+
+                    <Label Content="Статус:"/>
+                    <ComboBox Name="StatusFilterComboBox" Width="150">
+                        <ComboBoxItem Content="доступен"/>
+                        <ComboBoxItem Content="в ремонте"/>
+                        <ComboBoxItem Content="в пути"/>
+                    </ComboBox>
+
+                    <Button Content="Фильтр" Click="FilterVehiclesButton_Click"/>
+                    <Button Content="Сброс" Click="ResetVehiclesFilterButton_Click"/>
+                </StackPanel>
+
+                <Button Content="Add Vehicle" Click="AddVehicleButton_Click" />
+                <Button Content="Edit Vehicle" Click="EditVehicleButton_Click" />
+                <Button Content="Delete Vehicle" Click="DeleteVehicleButton_Click" />
+                <ListBox x:Name="VehiclesListBox" DisplayMemberPath="Model" />
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="Drivers">
+            <StackPanel>
+                <!-- элементы фильтрации водителей -->
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <Label Content="ФИО:"/>
+                    <TextBox Name="FullNameFilterTextBox" Width="150" />
+
+                    <Label Content="Номер лицензии:"/>
+                    <TextBox Name="LicenseFilterTextBox" Width="150" />
+
+                    <Label Content="Стаж (лет):"/>
+                    <TextBox Name="ExperienceFilterTextBox" Width="50" />
+
+                    <Button Content="Фильтр" Click="FilterDriversButton_Click"/>
+                    <Button Content="Сброс" Click="ResetDriversFilterButton_Click"/>
+                </StackPanel>
+
+                <Button Content="Add Driver" Click="AddDriverButton_Click" />
+                <Button Content="Edit Driver" Click="EditDriverButton_Click" />
+                <Button Content="Delete Driver" Click="DeleteDriverButton_Click" />
+                <ListBox x:Name="DriversListBox" DisplayMemberPath="FullName" />
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="Routes">
+            <StackPanel>
+                <!-- элементы фильтрации маршрутов -->
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <Label Content="Дата:"/>
+                    <TextBox Name="DateFilterTextBox" Width="100" />
+
+                    <Label Content="Транспорт:"/>
+                    <ComboBox Name="VehicleFilterComboBox" Width="150"/>
+
+                    <Label Content="Водитель:"/>
+                    <ComboBox Name="DriverFilterComboBox" Width="150"/>
+
+                    <Button Content="Фильтр" Click="FilterRoutesButton_Click"/>
+                    <Button Content="Сброс" Click="ResetFilterButton_Click"/>
+                </StackPanel>
+
+                <Button Content="Add Route" Click="AddRouteButton_Click" />
+                <ListBox x:Name="RoutesListBox" DisplayMemberPath="StartLocation" />
+            </StackPanel>
+        </TabItem>
+    </TabControl>
+</Window>
